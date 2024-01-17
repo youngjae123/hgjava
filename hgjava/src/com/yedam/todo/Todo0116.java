@@ -14,13 +14,11 @@ public class Todo0116 {
 			//입력값은 홍길동 입니다.
 			//quit 값이 들어오면 console에 <<end of prog>> 출력  
 			if(input.equals("quit")) {
-//				System.out.println("end of prog");
+				System.out.println("end of prog");
 				break;
-			}
-//			}else{//if end
+			}else{//if end
 			System.out.print("입력값은 " +input + " 입니다.");
-			System.out.println();
-//			}
+			}
 		}//while end
 	  }
 }
