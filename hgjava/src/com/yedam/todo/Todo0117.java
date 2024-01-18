@@ -16,31 +16,51 @@ public class Todo0117 {
 	 //이름: 박길동
 	 //연락처: 010-1111-2222
 	 //===================
-	 Scanner scn = new Scanner(System.in);
-	 int n;
-	 do {
-		 System.out.println("입력 처리 할 학생 수 입력(명):");
-		 n = scn.nextInt();
-	 }
-	 while(n<1||n>10);
 	 
-	 String names[] = new String[n];
-	 String phon[] = new String[n];
+	 		Scanner scn = new Scanner(System.in);
+			 String names[] = new String[3];
+			 String phone [] = new String[3];
+
+			 for (int i =0; i <3; i++){
+			  System.out.println("이름을 입력하세요");
+			 names[i] = scn.next();
+			 System.out.println("전화번호를 입력하세요");
+			 phone[i] = scn.next();
+			 }
+			 for(int i = 0; i<3; i++){
+			 System.out.println("이름: " + names[i]);
+			 System.out.println("연락처: " + phone[i]);
+			 System.out.println("===============");
+			 }
 	 
-	 for (int i=0; i<n; i++) {
-		 System.out.println("이름 전화번호 입력("+ (i+1) +"):");
-		 names[i] = scn.next();
-		 phon[i]=scn.next();
-	 }
 	 
-	 System.out.println("=========================");
-	 System.out.println("전체 학생 수: " + n + "명");
-	 System.out.println("=========================");
-	 System.out.println(" 이름    전화번호");
-	 for(int i =0; i < n; i++) 
-		 System.out.printf("%4s %14s\n", names[i], phon[i]);
-	 	System.out.println("======================");
 	 
-	
  }//main
+// Scanner scn = new Scanner(System.in);
+// int n;
+// do {
+//	 System.out.println("입력 처리 할 학생 수 입력(명):");
+//	 n = scn.nextInt();
+// }
+// while(n<1||n>10);
+// 
+// String names[] = new String[n];
+// String phon[] = new String[n];
+// 
+// for (int i=0; i<n; i++) {
+//	 System.out.println("이름 전화번호 입력("+ (i+1) +"):");
+//	 names[i] = scn.next();
+//	 phon[i]=scn.next();
+// }
+// 
+// System.out.println("=========================");
+// System.out.println("전체 학생 수: " + n + "명");
+// System.out.println("=========================");
+// System.out.println(" 이름    전화번호");
+// for(int i =0; i < n; i++) 
+//	 System.out.printf("%4s %14s\n", names[i], phon[i]);
+// System.out.println("======================");
+
+
+
 }//class
