@@ -5,7 +5,7 @@ import java.util.Scanner;
 //친구 정보를 저장하고 변경하고 관리.
 //Create, Read, Update, Delete.
 public class FriendExe {
-	public static void main(String[] args) {
+	public static void main(String[] args) {//메인 메서드 생성
 		Scanner scn = new Scanner(System.in);
 		boolean run = true;
 		Friend[] friends = new Friend[5];//{null,null,null,null,null}
@@ -71,14 +71,14 @@ public class FriendExe {
 							score = Integer.parseInt(sscore);
 						}//if
 						friends[i].score = (score != -1) ? score : friends[i].score;
-						friends[i].weight = (weight != -1) ? weight : friends[i].score;
+						friends[i].weight = (weight != -1) ? weight : friends[i].weight;
 						isExist = true;
 					}//if
 				}//for
 				if (!isExist) {
 					System.out.println("찾는 친구가 없습니다.");
 				}//if
-				System.out.println("수정되었습니다..");
+				System.out.println("수정되었습니다.");
 				break;
 				
 			case 4: //삭제
@@ -92,7 +92,7 @@ public class FriendExe {
 				}//for
 				System.out.println("삭제되었습니다.");
 				break;
-			case 5://점수 조회
+			case 5://점수 조회 = ~점 이상인 친구는 ~~입니다.
 				System.out.println("찾고있는 점수대를 입력하세요");
 				score = Integer.parseInt(scn.nextLine());
 				for(int i = 0; i < friends.length ; i++) {
@@ -105,7 +105,7 @@ public class FriendExe {
 				
 				
 				
-			case 6://분석
+			case 6://분석= 등록된 친구들의 평균점수는 ~~이고 그 중 최고점수는 ~~ 입니다.
 				int sum = 0;
 				int avg = 0;
 				int cnt = 0;
@@ -119,7 +119,7 @@ public class FriendExe {
 						}//if
 					}//if
 				}//for
-				System.out.printf("등록된 친구들의 평균 점수는 %d 이고 그중 최고점수는%d 입니다.\n",sum/cnt,max);
+				System.out.printf("등록된 친구들의 평균 점수는 %d 이고 그 중 최고점수는 %d 입니다.\n",sum/cnt,max);
 				break;
 				
 			case 9: //종료

@@ -1,14 +1,12 @@
-package com.yedam.todo;
+package com.yedam.reference;
 
 import java.util.Scanner;
 
-import com.yedam.reference.Friend;
-
-public class Todo0118 {
+public class 복습 {
 	public static void main(String[] args) {//main 메서드 생성
 		Scanner scn = new Scanner(System.in);//스캐너 만듬
 		
-		Friend1[] friends = new Friend1[5];//friends라는 배열에 5개 방을 만듦
+		Friend[] friends = new Friend[5];//friends라는 배열에 5개 방을 만듦
 		
 		boolean run = true;
 
@@ -28,7 +26,7 @@ public class Todo0118 {
 				System.out.println("점수를 입력해주세요");//점수 입력 문구 출력
 				int score = Integer.parseInt(scn.nextLine());// 입력받은 점수를 score에 저장
 				
-				Friend1 friend = new Friend1();//friend라는 배열 생성
+				Friend friend = new Friend();//friend라는 배열 생성
 				friend.name = name;// friend.name에 이름 저장
 				friend.weight = weight;//friend.weight에 몸무게 저장
 				friend.score = score;//friend.score에 점수 저장
@@ -122,4 +120,4 @@ public class Todo0118 {
 			
 		}//while
 	}//main
-}
+}//class
