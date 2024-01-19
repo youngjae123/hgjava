@@ -2,8 +2,6 @@ package com.yedam.todo;
 
 import java.util.Scanner;
 
-import com.yedam.reference.Friend;
-
 public class Todo0118 {
 	public static void main(String[] args) {//main 메서드 생성
 		Scanner scn = new Scanner(System.in);//스캐너 만듬
@@ -67,8 +65,8 @@ public class Todo0118 {
 					if(!sscore.equals("")) {//sscore의 값이 "" 아닐때 실행
 						score = Integer.parseInt(sscore);//score의 값을 입력받은 sscore의 값으로 변환
 					}
-					friends[i].score = (score != 0) ? score : friends[i].score;//score가 -1이 아니면 score의 값을 배열.score에 저장
-					friends[i].weight = (weight != 0) ? weight : friends[i].weight;//weight가 0이 아니면 weight의 값을 배열.weight에 저장
+					friends[i].score = (score != -1) ? score : friends[i].score;//score가 -1이 아니면 score의 값을 배열.score에 저장
+					friends[i].weight = (weight != -1) ? weight : friends[i].weight;//weight가 0이 아니면 weight의 값을 배열.weight에 저장
 					isExit = true;
 				}
 			}

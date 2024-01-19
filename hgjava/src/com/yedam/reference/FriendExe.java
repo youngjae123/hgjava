@@ -70,8 +70,8 @@ public class FriendExe {
 						if(!sscore.equals("")) {
 							score = Integer.parseInt(sscore);
 						}//if
-						friends[i].score = (score != -1) ? score : friends[i].score;
-						friends[i].weight = (weight != -1) ? weight : friends[i].weight;
+						friends[i].score = (score != 0) ? score : friends[i].score;
+						friends[i].weight = (weight != 0) ? weight : friends[i].weight;
 						isExist = true;
 					}//if
 				}//for
