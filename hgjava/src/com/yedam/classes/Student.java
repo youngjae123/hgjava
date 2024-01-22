@@ -8,7 +8,14 @@ public class Student {
 	private String sname;
 	private int score; ///0
 	private double height;// 0.0
+	private boolean onSchool;
 	
+	public boolean isOnSchool() {
+		return onSchool;
+	}
+	public void setOnSchool(boolean onSchool) {
+		this.onSchool = onSchool;
+	}
 	//생성자:new Student()
 	public Student(){
 	}
@@ -31,7 +38,7 @@ public class Student {
 	
 	
 	//메소드
-	void showInfo() {
+	public void showInfo() {
 		System.out.printf("번호는 %s, 이름은 %s, 점수는 %d 키는 %.1f, 입니다.\n", sno, sname, score, height);
 	}
 //	String showInfoStr() {

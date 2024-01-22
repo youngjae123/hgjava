@@ -11,6 +11,7 @@ public class Friend {
 	public Friend() {
 		
 	}
+	
 	public Friend(String name, String num){
 		this.sname = name;
 		this.snum = num;

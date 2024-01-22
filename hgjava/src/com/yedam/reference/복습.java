@@ -49,7 +49,7 @@ public class 복습 {
 				break;
 			case 3:  //수정
 				score = 0;
-				weight =0;
+				weight = 0;
 				boolean isExit = false;
 				System.out.println("찾을 이름을 입력하세요.");//찾을 이름 출력
 				name =scn.nextLine();// 입력값을 name에 저장

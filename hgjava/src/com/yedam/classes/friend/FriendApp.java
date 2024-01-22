@@ -27,6 +27,7 @@ public class FriendApp {
 	public Friend[] list() {
 		return friends;
 	}
+	
 	//수정
 	public boolean modify(String sname, String snum) {
 		for(int i = 0; i < friends.length; i++) {

@@ -59,6 +59,7 @@ public class FriendExe {
 						list[i].showInfo();
 					}
 				}
+				
 				break;
 			case 3://수정
 				System.out.println("이름을 입력하세요.");
