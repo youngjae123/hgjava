@@ -24,8 +24,8 @@ public class CalendarExe {
 			//수정..월이 변경될때마다 마지막날 계산
 			
 			// 1 ~ 31까지 반복.
-			String[] days = { "Sun" , "Mon", "Tue", "Thr", "Fri", "Sat"};
 //			System.out.println("Sum Mon Tue Wed Thr Fri Sat");
+			String[] days = { "Sun" , "Mon", "Tue", "Thr", "Fri", "Sat"};
 					for(int i=0; i <days.length; i++) {
 						System.out.printf("%4s,day[i]");
 					}
