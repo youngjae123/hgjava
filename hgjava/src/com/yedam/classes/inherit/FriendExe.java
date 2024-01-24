@@ -12,8 +12,14 @@ public class FriendExe {
 		FriendApp app = new FriendApp();
 		
 		while(run) {
+			int menu = 0;
 			System.out.println("1.등록 2.조회 3.수정 4.삭제 9.종료");
-			int menu = Integer.parseInt(scn.nextLine());
+			try {
+			menu = Integer.parseInt(scn.nextLine());
+			break;
+			} catch(NumberFormatException e) {
+				System.out.println("숫자입력");
+			}
 			
 			switch(menu) {
 			case 1://등록 1)이름 연락처 2)학교친구 3)회사친구
