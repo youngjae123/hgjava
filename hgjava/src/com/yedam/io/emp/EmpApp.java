@@ -1,7 +1,9 @@
 package com.yedam.io.emp;
 
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -22,6 +24,15 @@ public class EmpApp {
 	}
 	public void init() {
 		try {
+			File file = new File("c:/temp/emp.dat");
+			if(!file.exists()) {
+				file.createNewFile();
+			}
+			else {
+				file.delete();
+				System.out.println(file.lastModified());
+			}
+			
 			FileInputStream fis = new FileInputStream("c:/temp/emp.dat");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			
@@ -29,9 +40,12 @@ public class EmpApp {
 			ois.close();
 			fis.close();
 			
-		} catch (Exception e) {
-			System.out.println("초기파일없음.");
-		}
+		}catch (EOFException e) {
+		} catch (FileNotFoundException fe) {
+			System.out.println("파일 없음");
+		} catch (Exception ee){
+		System.out.println("알수없는 오류");
+	}
 	}
 	
 	//등록 
