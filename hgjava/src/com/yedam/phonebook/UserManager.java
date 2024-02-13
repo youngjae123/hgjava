@@ -38,15 +38,15 @@ public class UserManager {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public class UserApp{
-		private User[] users;
-		
-	}
-		public User logi(String id, String pw) {
-			for(int i = 0; i < users.lenght; i++) {
-				if(users[i] != null) {
-					
-				}
-			}
-		}
+//	public class UserApp{
+//		private User[] users;
+//		
+//	}
+//		public User logi(String id, String pw) {
+//			for(int i = 0; i < users.lenght; i++) {
+//				if(users[i] != null) {
+//					
+//				}
+//			}
+//		}
 }
