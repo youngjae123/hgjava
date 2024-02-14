@@ -7,5 +7,6 @@
 	</classpathentry>
 	<classpathentry kind="src" path="hgjava/src"/>
 	<classpathentry kind="lib" path="C:/Dev/lombok-1.18.30.jar"/>
+	<classpathentry kind="lib" path="C:/Dev/ojdbc11_g.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
