@@ -14,4 +14,17 @@ public class Room {
  private int roomm;//방 가격
  private String roomnow;//방 상태
  private int max;//쵀대 인원
+ 
+ public Room(int roomno,String roomtp,String roomct, int roomm, int max) {
+	 this.roomno = roomno;
+	 this.roomtp = roomtp;
+	 this.roomct = roomct;
+	 this.max = max;
+	 
+ }
+
+public Room(String id, String ci, String co, int int1, int int2) {
+	// TODO Auto-generated constructor stub
+}
+
 }
