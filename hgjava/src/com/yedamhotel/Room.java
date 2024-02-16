@@ -23,8 +23,5 @@ public class Room {
 	 
  }
 
-public Room(String id, String ci, String co, int int1, int int2) {
-	// TODO Auto-generated constructor stub
-}
 
 }

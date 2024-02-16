@@ -10,12 +10,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Customer {
-private String name;//고객명
- private String phone;//연락처
- private String id;//아이디
- private int roomno;//방번호
- private Date ci;//체크인
- private Date co;//체크아웃
- private int pr;//투숙인원
+	final static int MAX = 25;
+	public static Customer box[] = new Customer[MAX];
+	Date date = new Date();
+	public Customer(String name2, String phone2, String id2, int rno, Date date, Date date2, int pr2) {
+	}
+	 String name;// 고객명
+	 String phone;// 연락처
+	 String id;// 아이디
+	 String roomno;// 방번호
+	 Date ci;// 체크인
+	 String co;// 체크아웃
+	 int pr;// 투숙인원
 
+//	public long in_time = System.currentTimeMillis();
+//	public long out_time = System.currentTimeMillis();
+	int carge = 0;
 }

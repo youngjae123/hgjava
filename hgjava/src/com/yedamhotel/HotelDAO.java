@@ -61,23 +61,32 @@ public class HotelDAO {
 	}
 
 	// 예약하기
-	public boolean insertCus(Customer cus) {
+	public boolean insertCus(Customer box) {
 		conn = DAO.getConn();
 		SimpleDateFormat sdf = new SimpleDateFormat("yy-mm-dd");
-		sql = "insert into customer (name,\r\n" + "                       phone,\r\n" + "                       id,\r\n"
-				+ "                       room_no,\r\n" + "                       ci,\r\n"
-				+ "                       co,\r\n" + "                       pr)\r\n" + "values (?,\r\n"
-				+ "        ?,\r\n" + "        ?,\r\n" + "        ?,\r\n" + "        ?,\r\n" + "        ?,\r\n"
-				+ "        ?)";
+		sql = "insert into customer (name,\r\n" 
+		        + "                  phone,\r\n"
+		        + "                  id,\r\n"
+				+ "                  room_no,\r\n" 
+		        + "                  ci,\r\n"
+				+ "                  co,\r\n" 
+		        + "                  pr)\r\n" 
+				+ "values           (?,\r\n"
+				+ "                  ?,\r\n" 
+				+ "                  ?,\r\n" 
+				+ "                  ?,\r\n" 
+				+ "                  ?,\r\n" 
+				+ "                  ?,\r\n"
+				+ "                  ?)";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, cus.getName());
-			psmt.setString(2, cus.getPhone());
-			psmt.setString(3, cus.getId());
-			psmt.setInt(4, cus.getRoomno());
-			psmt.setString(5, sdf.format(cus.getCi()));
-			psmt.setString(6, sdf.format(cus.getCo()));
-			psmt.setInt(7, cus.getPr());
+			psmt.setString(1, box.getName());
+			psmt.setString(2, box.getPhone());
+			psmt.setString(3, box.getId());
+			psmt.setString(4, box.getRoomno());
+			psmt.setString(5, sdf.format(box.getCi()));
+			psmt.setString(6, sdf.format(box.getCo()));
+			psmt.setInt(7, box.getPr());
 
 			int r = psmt.executeUpdate();
 			if (r > 0) {
@@ -129,8 +138,8 @@ public class HotelDAO {
 				cus.setName(rs.getString("name"));
 				cus.setPhone(rs.getString("phone"));
 				cus.setCi(rs.getDate("ci"));
-				cus.setCo(rs.getDate("co"));
-				cus.setRoomno(rs.getInt("room_no"));
+				cus.setCo(rs.getString("co"));
+				cus.setRoomno(rs.getString("room_no"));
 				cus.setPr(rs.getInt("pr"));
 				list.add(cus);
 			}
@@ -154,5 +163,14 @@ public class HotelDAO {
 		}
 			return false;
 		}
-	}
+//	public void clear() {
+//		for (int i = 0; i < 25; i++)
+//			System.out.println();
+//	}
+
+	public boolean insertCus(Customer[] box) {
+		return false;
+	}}
+//	public void 
+//	}
 
