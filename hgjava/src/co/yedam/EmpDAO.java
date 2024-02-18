@@ -39,12 +39,20 @@ public class EmpDAO {
 	public boolean insertEmp(Employee emp) {
 		conn = DAO.getConn(); // Connection 객체 생성.
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-		sql = "insert into employee (emp_no,\r\n" + "                       emp_name,\r\n"
-				+ "                       email,\r\n" + "                       phone,\r\n"
-				+ "                       salary,\r\n" + "                       hire_date,\r\n"
-				+ "                       department)\r\n" + "values                (?,\r\n"
-				+ "                       ?,\r\n" + "                       ?,\r\n" + "                       ?,\r\n"
-				+ "                       ?,\r\n" + "                       ?,\r\n" + "                       ?)";
+		sql = "insert into employee (     emp_no,\r\n" 
+		        + "                       emp_name,\r\n"
+				+ "                       email,\r\n" 
+		        + "                       phone,\r\n"
+				+ "                       salary,\r\n" 
+		        + "                       hire_date,\r\n"
+				+ "                       department)\r\n" 
+		        + "values                (?,\r\n"
+				+ "                       ?,\r\n" 
+		        + "                       ?,\r\n" 
+				+ "                       ?,\r\n"
+				+ "                       ?,\r\n" 
+				+ "                       ?,\r\n" 
+				+ "                       ?)";
 
 		try {
 			psmt = conn.prepareStatement(sql);

@@ -34,58 +34,34 @@ public class HotelDAO {
 	}
 
 //=======================================고객=====================================
-	// 객실정보
-	public List<Room> getList() {
-		conn = DAO.getConn();
-		List<Room> list = new ArrayList<>();
-		sql = "select  room_no,\r\n" + "        room_tp,\r\n" + "        room_ct,\r\n" + "        room_m,\r\n"
-				+ "        room_now,\r\n" + "        max\r\n" + "from   room";
-		try {
-			psmt = conn.prepareStatement(sql);
-			rs = psmt.executeQuery();
-			while (rs.next()) {
-				Room room = new Room();
-				room.setRoomno(rs.getInt("room_no"));
-				room.setRoomtp(rs.getString("room_tp"));
-				room.setRoomct(rs.getString("room_ct"));
-				room.setRoomm(rs.getInt("room_m"));
-				room.setRoomnow(rs.getString("room_now"));
-				room.setMax(rs.getInt("max"));
-				list.add(room);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return list;
-
-	}
+	
 
 	// 예약하기
 	public boolean insertCus(Customer box) {
 		conn = DAO.getConn();
 		SimpleDateFormat sdf = new SimpleDateFormat("yy-mm-dd");
-		sql = "insert into customer (name,\r\n" 
-		        + "                  phone,\r\n"
-		        + "                  id,\r\n"
-				+ "                  room_no,\r\n" 
-		        + "                  ci,\r\n"
-				+ "                  co,\r\n" 
-		        + "                  pr)\r\n" 
-				+ "values           (?,\r\n"
-				+ "                  ?,\r\n" 
-				+ "                  ?,\r\n" 
-				+ "                  ?,\r\n" 
-				+ "                  ?,\r\n" 
-				+ "                  ?,\r\n"
-				+ "                  ?)";
+		sql = "insert into customer (name, \r\n"
+				+ "                  phone,\r\n"
+				+ "		             id,\r\n"
+				+ "				     room_no,\r\n"
+				+ "		             ci,\r\n"
+				+ "				     co,\r\n"
+				+ "		             pr)\r\n"
+				+ "values          (?,\r\n"
+				+ "				    ?,\r\n"
+				+ "				    ?,\r\n"
+				+ "				    ?,\r\n"
+				+ "				    ?,\r\n"
+				+ "			        ?,\r\n"
+				+ "                 ?)";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, box.getName());
 			psmt.setString(2, box.getPhone());
 			psmt.setString(3, box.getId());
 			psmt.setString(4, box.getRoomno());
-			psmt.setString(5, sdf.format(box.getCi()));
-			psmt.setString(6, sdf.format(box.getCo()));
+			psmt.setString(5, box.getCi());
+			psmt.setString(6, box.getCo());
 			psmt.setInt(7, box.getPr());
 
 			int r = psmt.executeUpdate();
@@ -99,15 +75,42 @@ public class HotelDAO {
 		}
 		return false;
 	}
-
-	// 삭제
-	public boolean deleteCus(String id) {
+//업데이트
+	public boolean updateCus(Customer box) {
 		conn = DAO.getConn();
-		sql = "delete Customer" + " where id = ?";
+		SimpleDateFormat sdf = new SimpleDateFormat("yy-mm-dd");
+		sql = "update     customer\r\n"
+				+ "set    room_no = ?\r\n"
+				+ "where  phone = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, box.getRoomno());
+			psmt.setString(2, box.getPhone());
+//			psmt.setString(1, box.getName());
+//			psmt.setString(3, box.getId());
+//			psmt.setString(5, box.getCi());
+//			psmt.setString(6, box.getCo());
+//			psmt.setInt(7, box.getPr());
+
+			int r = psmt.executeUpdate();
+			if (r > 0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconn();
+		}
+		return false;
+	}
+	// 예약 취소
+	public boolean deleteCus(String name) {
+		conn = DAO.getConn();
+		sql = "delete from customer" + " where name = ?";
 
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, id);
+			psmt.setString(1, name);
 			int r = psmt.executeUpdate();
 			if (r > 0) {
 				return true;
@@ -121,7 +124,7 @@ public class HotelDAO {
 	}
 
 //=====================================관리자===========================
-	// 예약확인
+	// 현재 객실별 정보
 	public List<Customer> getList2(String id) {
 		conn = DAO.getConn();
 		List<Customer> list = new ArrayList<>();
@@ -137,7 +140,7 @@ public class HotelDAO {
 				Customer cus = new Customer();
 				cus.setName(rs.getString("name"));
 				cus.setPhone(rs.getString("phone"));
-				cus.setCi(rs.getDate("ci"));
+				cus.setCi(rs.getString("ci"));
 				cus.setCo(rs.getString("co"));
 				cus.setRoomno(rs.getString("room_no"));
 				cus.setPr(rs.getInt("pr"));
@@ -150,7 +153,37 @@ public class HotelDAO {
 		}
 		return list;
 	}
+	
+	// 예약확인
+		public List<Room> getList() {
+			conn = DAO.getConn();
+			List<Room> list = new ArrayList<>();
+			sql = "select  room_no,\r\n" 
+			        + "        room_tp,\r\n" 
+					+ "        room_ct,\r\n" 
+			        + "        room_m,\r\n"
+					+ "        room_now,\r\n" 
+			        + "        max\r\n" 
+					+ "from   room";
+			try {
+				psmt = conn.prepareStatement(sql);
+				rs = psmt.executeQuery();
+				while (rs.next()) {
+					Room room = new Room();
+					room.setRoomno(rs.getInt("room_no"));
+					room.setRoomtp(rs.getString("room_tp"));
+					room.setRoomct(rs.getString("room_ct"));
+					room.setRoomm(rs.getInt("room_m"));
+					room.setRoomnow(rs.getString("room_now"));
+					room.setMax(rs.getInt("max"));
+					list.add(room);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return list;
 
+		}
 	// 예약정보 수정
 	public boolean updateCus(String id) {
 		conn = DAO.getConn();

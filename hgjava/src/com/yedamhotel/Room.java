@@ -23,5 +23,56 @@ public class Room {
 	 
  }
 
+public Room() {
+}
+
+public int getRoomno() {
+	return roomno;
+}
+
+public void setRoomno(int roomno) {
+	this.roomno = roomno;
+}
+
+public String getRoomtp() {
+	return roomtp;
+}
+
+public void setRoomtp(String roomtp) {
+	this.roomtp = roomtp;
+}
+
+public String getRoomct() {
+	return roomct;
+}
+
+public void setRoomct(String roomct) {
+	this.roomct = roomct;
+}
+
+public int getRoomm() {
+	return roomm;
+}
+
+public void setRoomm(int roomm) {
+	this.roomm = roomm;
+}
+
+public String getRoomnow() {
+	return roomnow;
+}
+
+public void setRoomnow(String roomnow) {
+	this.roomnow = roomnow;
+}
+
+public int getMax() {
+	return max;
+}
+
+public void setMax(int max) {
+	this.max = max;
+}
+
 
 }

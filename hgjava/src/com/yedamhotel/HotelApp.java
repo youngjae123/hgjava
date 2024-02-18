@@ -39,7 +39,7 @@ public class HotelApp {
 			switch (menu) {
 			case 1:
 				while (run) {
-					System.out.println("1.객실정보, 2.예약하기, 3.예약취소 4.종료 5");
+					System.out.println("1.객실정보, 2.예약하기, 3.예약취소 4.종료 ");
 					System.out.print("번호 입력>>");
 					menu = scn.nextInt();
 					scn.nextLine();
@@ -63,12 +63,6 @@ public class HotelApp {
 							System.out.print(" [" + box[i].getRoomno() + "]");
 						}
 						System.out.println();
-						if (box.length > 0) {
-							System.out.println(box[0]);
-						} else {
-							System.out.println("배열 없음");
-						}
-						System.out.println(box[201]);
 						break;
 
 					case 2:// 예약하기
@@ -89,33 +83,53 @@ public class HotelApp {
 							System.out.print("투숙인원>>");
 							int pr = scn.nextInt();
 							scn.nextLine();
-							if(hdao.insertCus(box)) {
-								System.out.println("예약완료");
-							}else
 
+							box[rno].setRoomno("   ■    ");
 							box[rno].setName(name);
 							box[rno].setPhone(phone);
-							box[rno].setRoomno("   ■    ");
 							box[rno].setId(id);
 							box[rno].setPr(pr);
-							System.out.println(" (" + rno + ")번 객실에 예약이 완료되었습니다.");
-							System.out.println(box[rno]);
+							
+							if(hdao.insertCus(box[rno])) {
+								System.out.println(" ( " + rno + " )번 객실에 예약이 완료되었습니다.");
+							}
 						} else {
 							System.out.println("이미 예약되었거나 예약할 수 없는 객실을 입력하였습니다.\n!** 객실 번호를 확인해주세요");
 						}
 
 						break;
 					case 3:// 예약취소
-						System.out.println("아이디를 입력해주세요.");
-						String did = scn.nextLine();
+//						System.out.println("이름을 입력해주세요.");
+//						String rmno = scn.nextLine();
+//						Customer cus = new Customer();
+//						cus.setName(rmno);
+//
+//						if (hdao.deleteCus(rmno)) {
+//							System.out.println("예약이 취소되었습니다.");
+//						} else {
+//							System.out.println("예약된 내역을 찾지 못하였습니다.\n !객실 번호를 확인해주세요**!");
+//						}
+//						break;
 
-						if (hdao.deleteCus(did)) {
-							System.out.println("예약이 취소되었습니다.");
+						System.out.print("폰번호를 입력해주세요>>>>");
+						int phone = scn.nextInt();scn.nextLine();
+						System.out.println("객실 번호를 입력해주세요");
+						String rmno = scn.nextLine();
+						if (box[phone].getRoomno() == "■") {
+							
+							box[phone].setRoomno(rmno);
+							box[phone].setName("");
+							box[phone].setPhone("");
+							box[phone].setId("");
+							box[phone].setPr(null);
+							
+							if(hdao.updateCus(box[phone])) {
+								System.out.println(" ( " + rmno + " )번 객실에 예약이 취소되었습니다.");
+							}
 						} else {
-							System.out.println("예약된 내역을 찾지 못하였습니다.\n !**아이디를 확인해주세요**!");
+							System.out.println("이미 취소되었거나 예약된 정보가 없습니다..\n!** 객실 번호를 확인해주세요");
 						}
 						break;
-
 					case 4:// 종료
 						System.out.println("종료합니다.");
 						run = false;
@@ -127,7 +141,7 @@ public class HotelApp {
 				while (run4) {
 					System.out.println("===================메뉴================================");
 					System.out.println(
-							"     1.예약확인              2.회원정보 수정\n     3.체크인                4.체크아웃\n     5.예약내역조회(날짜별)      6.객실 정보 보기 \n     7.종료");
+							"     1.예약확인              2.회원정보 수정\n                     4.체크아웃\n                7.종료");
 					System.out.println("======================================================");
 					System.out.println("메뉴선택>>");
 					menu = scn.nextInt();
@@ -158,8 +172,7 @@ public class HotelApp {
 						break;
 					case 2:// 예약 정보 수정
 
-					case 3:// 체크인
-					case 4:// 체크아웃(빈방)
+					case 3:// 체크아웃(빈방)
 						System.out.println("체크아웃 할 객실 번호를 입력하세요");
 						int rno = scn.nextInt();
 						scn.nextLine();
@@ -177,8 +190,6 @@ public class HotelApp {
 						} else {
 							System.out.println("이미 체크아웃 되었거나, 잘못된 객실 번호 입니다.\n!**객실 번호를 확인해주세요**!");
 						}
-
-					case 5:// 예약내역조회(날짜)
 					case 6:// 객실 정보 보기
 					case 7:// 종료
 						System.out.println("프로그램을 종료합니다.");
