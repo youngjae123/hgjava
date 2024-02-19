@@ -1,7 +1,6 @@
 package com.yedamhotel;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -77,8 +76,10 @@ public class HotelApp {
 						System.out.println("객실 번호를 입력해주세요");
 						int rmno = scn.nextInt();
 						scn.nextLine();
+						System.out.println("아이디를 입력해주세요");
+						String id1 = scn.nextLine();
 
-						if (hdao.deleteCus(rmno)) {
+						if (hdao.deleteCus(rmno,id1)) {
 							System.out.println(" ( " + rmno + " )번 객실에 예약이 취소되었습니다.");
 						} else {
 							System.out.println("이미 취소되었거나 예약된 정보가 없습니다..\n!** 객실 번호를 확인해주세요**!");
@@ -96,7 +97,7 @@ public class HotelApp {
 				boolean run3 = true;
 				while (run3) {
 					System.out.println("===================메뉴================================");
-					System.out.println("     1.예약확인   2.회원정보 수정    3.체크아웃           7.종료");
+					System.out.println("     1.예약확인   2.체크인,체크아웃날짜변경 3.체크아웃              7.종료");
 					System.out.println("======================================================");
 					System.out.println("메뉴선택>>");
 					menu = scn.nextInt();
@@ -104,47 +105,57 @@ public class HotelApp {
 					switch (menu) {
 					case 1:// 예약 확인
 						List<Customer> list1 = hdao.getList2();
+						
 						if (list1.size() > 0) {
 							System.out.println(
-									"=======================================================================================");
+									"=================================================================================================");
 							System.out.println(
-									"  이름   ||      연락처      ||      체크인      ||      체크아웃      ||  방 번호  ||  인원   ||");
+									"  이름   ||      연락처       ||     ID   ||    체크인    ||    체크아웃    ||  방 번호  ||  인원   ||");
 							System.out.println(
-									"=======================================================================================");
+									"=================================================================================================");
 							for (Customer cus : list1) {
-								System.out.println("  " + cus.getName() + "  ||  " + cus.getPhone() + "  ||  "
-										+ cus.getCi() + "   ||    " + cus.getCo() + "   ||   " + cus.getRoomno()
-										+ "    ||  (" + cus.getPr() + ")   ||  ");
+								System.out.println(       "  "     + cus.getName() 
+								                        + "  ||  " + cus.getPhone() 
+								                        + "  ||  " + cus.getId() 
+								                        + "    ||  " + cus.getCheckin() 
+								                        + "  ||  " + cus.getCheckout() 
+								                        + "   ||    " + cus.getRoomno()
+										                + "   || (" + cus.getInperson() 
+										                + ")  ||  ");
 							}
 							System.out.println(
-									"=======================================================================================");
+									"=================================================================================================");
 						} else {
 							System.out.println("예약된 내역이 없습니다.");
 						}
 						break;
 
-					case 2:// 예약 정보 수정
+					case 2:// 체크인,체크아웃 변경
+						
+						System.out.println("id를 입력하세요");
+						String id = scn.nextLine();
+						System.err.println("변경할 체크인 날짜를 입력하세요");
+						String ci = scn.nextLine();
+						System.out.println("변경할 체크아웃 날짜를 입력하세요");
+						String co = scn.nextLine();
+						
+						if(hdao.updateCus(id, ci, co)) {
+							System.out.println("("+id+") 의 체크인과 체크아웃날짜를 변경하였습니다.");
+						}
+						break;
+						
+					case 3://체크아웃
+						System.out.println("객실 번호를 입력해주세요");
+						int rmno = scn.nextInt();
+						scn.nextLine();
+						
 
-					case 3:// 체크아웃(빈방)
-//						System.out.println("체크아웃 할 객실 번호를 입력하세요");
-//						int rno = scn.nextInt();
-//						scn.nextLine();
-//
-//						if (box[rno].getState() == " ■ ") {
-//							Date date = new Date();
-//							box[rno].setCo(date.toString());
-//							System.out.println("(" + rno + ")번 객실에서 체크아웃하였습니다.");
-//
-//							box[rno].setName("");
-//							box[rno].setPhone("");
-//							box[rno].setState("(" + rno + ")");
-//							box[rno].setId("");
-//							box[rno].setPr(0);
-//						} else {
-//							System.out.println("이미 체크아웃 되었거나, 잘못된 객실 번호 입니다.\n!**객실 번호를 확인해주세요**!");
-//						}
-
-					case 6:// 객실 정보 보기
+						if (hdao.deleteCus(rmno)) {
+							System.out.println(" ( " + rmno + " )번 객실에서 체크아웃되었습니다.");
+						} else {
+							System.out.println("이미 체크아웃 하였거나 객실번호가 잘못되었습니다.\n!** 객실 번호를 확인해주세요**!");
+						}
+						break;
 					case 7:// 종료
 						System.out.println("프로그램을 종료합니다.");
 						run3 = false;

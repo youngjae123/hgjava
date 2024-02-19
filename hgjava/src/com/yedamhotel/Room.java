@@ -13,6 +13,36 @@ public class Room {
  private int roommoney;//방 가격
  private String roomstate;//방 상태
  private int maxperson;//쵀대 인원
+public int getRoomno() {
+	return roomno;
+}
+public void setRoomno(int roomno) {
+	this.roomno = roomno;
+}
+public String getRoomtype() {
+	return roomtype;
+}
+public void setRoomtype(String roomtype) {
+	this.roomtype = roomtype;
+}
+public int getRoommoney() {
+	return roommoney;
+}
+public void setRoommoney(int roommoney) {
+	this.roommoney = roommoney;
+}
+public String getRoomstate() {
+	return roomstate;
+}
+public void setRoomstate(String roomstate) {
+	this.roomstate = roomstate;
+}
+public int getMaxperson() {
+	return maxperson;
+}
+public void setMaxperson(int maxperson) {
+	this.maxperson = maxperson;
+}
  
  
 }

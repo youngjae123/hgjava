@@ -1,6 +1,7 @@
 package com.yedamhotel;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,8 +40,12 @@ public class HotelDAO {
 	public List<Room> getList() {
 		conn = DAO.getConn();
 		List<Room> list = new ArrayList<>();
-		sql = "select      room_no,\r\n" + "        room_type,\r\n" + "        room_money,\r\n"
-				+ "        room_state,\r\n" + "        max_person\r\n" + "from   room";
+		sql = "select      room_no,\r\n" 
+		        + "        room_type,\r\n" 
+				+ "        room_money,\r\n"
+				+ "        room_state,\r\n" 
+				+ "        max_person\r\n" 
+				+ "from   room";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -65,14 +70,25 @@ public class HotelDAO {
 		// SimpleDateFormat sdf = new SimpleDateFormat("yy-mm-dd");
 		String sql1;
 		String sql2;
-		sql1 = "insert into customer (name, \r\n" + "                  phone,\r\n" + "		             id,\r\n"
-				+ "				     room_no,\r\n" + "		             check_in,\r\n"
-				+ "				     check_out,\r\n" + "		             in_person)\r\n" + "values          (?,\r\n"
-				+ "				    ?,\r\n" + "				    ?,\r\n" + "				    ?,\r\n"
-				+ "                 to_date(?,'yy-mm-dd')," + "                 to_date(?,'yy-mm-dd'),"
+		sql1 = "insert into customer (name, \r\n" 
+		        + "                  phone,\r\n" 
+		        + "		             id,\r\n"
+				+ "				     room_no,\r\n" 
+		        + "		             check_in,\r\n"
+				+ "				     check_out,\r\n" 
+		        + "		             in_person)\r\n" 
+				+ "values          (?,\r\n"
+				+ "				    ?,\r\n" 
+				+ "				    ?,\r\n" 
+				+ "				    ?,\r\n"
+				+ "                 to_date(?,'yy-mm-dd')," 
+				+ "                 to_date(?,'yy-mm-dd'),"
 				+ "                 ?)";
-		sql2 = "update  room\r\n" + "set room_state ='예약중'\r\n" + "where room_no  = (select room_no\r\n"
-				+ "                  from  customer\r\n" + "                  where room_no =?)";
+		sql2 = "update  room\r\n" 
+				+ "set room_state ='예약중'\r\n" 
+				+ "where room_no  = (select room_no\r\n"
+				+ "                  from  customer\r\n" 
+				+ "                  where room_no =?)";
 		try {
 			psmt = conn.prepareStatement(sql1);
 			psmt.setString(1, name);
@@ -102,17 +118,22 @@ public class HotelDAO {
 	}
 
 	// 예약 취소
-	public boolean deleteCus(int roomno) {
+	public boolean deleteCus(int roomno, String id) {
 		conn = DAO.getConn();
 		String sql1;
 		String sql2;
-		sql2 = " delete customer" + " where room_no = ?";
-		sql1 = "update room\r\n" + "set room_state = '예약가능'\r\n" + "where room_no  = (select room_no\r\n"
-				+ "                  from customer\r\n" + "                  where room_no=?)";
+		sql2 = " delete customer" 
+		     + " where room_no = ?";
+		
+		sql1    = "update room\r\n" 
+		        + "set room_state = '예약가능'\r\n" 
+				+ "where room_no  = (select room_no\r\n"
+				+ "                  from customer\r\n" 
+				+ "                  where id=?)";
 
 		try {
 			psmt = conn.prepareStatement(sql1);
-			psmt.setInt(1, roomno);
+			psmt.setString(1, id);
 			int r = psmt.executeUpdate();
 			if (r > 0) {
 				psmt = conn.prepareStatement(sql2);
@@ -154,9 +175,10 @@ public class HotelDAO {
 				cus1.setPhone(rs.getString("phone"));
 				cus1.setId(rs.getString("id"));
 				cus1.setRoomno(rs.getInt("room_no"));
-				cus1.setCheckout(rs.getDate("check_out"));
-				cus1.setCheckin(rs.getDate("check_in"));
+				cus1.setCheckout(rs.getString("check_out"));
+				cus1.setCheckin(rs.getString("check_in"));
 				cus1.setInperson(rs.getInt("in_person"));
+				cus.add(cus1);
 
 			}
 		} catch (
@@ -170,14 +192,59 @@ public class HotelDAO {
 	}
 
 	// 예약정보 수정
-	public boolean updateCus(String id) {
+	public boolean updateCus(String id, String ci, String co) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yy-mm-dd");
 		conn = DAO.getConn();
-		sql = "update customer " + " set id = nvl(?,id)";
+		sql = " update customer\r\n"
+				+ " set    check_in =?,check_out=?\r\n"
+				+ " where  id = ?";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, id);
+			psmt.setString(1, ci);
+			psmt.setString(2, co);
+			psmt.setString(3, id);
+			
+			int r = psmt.executeUpdate();
+			if(r>0) {
+				return true;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			disconn();
+		}
+		return false;
+	}
+	// 체크아웃
+	public boolean deleteCus(int roomno) {
+		conn = DAO.getConn();
+		String sql1;
+		String sql2;
+		sql2 = " delete customer" 
+		     + " where room_no = ?";
+		
+		sql1    = "update room\r\n" 
+		        + "set room_state = '예약가능'\r\n" 
+				+ "where room_no  = (select room_no\r\n"
+				+ "                  from customer\r\n" 
+				+ "                  where room_no=?)";
+		
+		try {
+			psmt = conn.prepareStatement(sql1);
+			psmt.setInt(1, roomno);
+			int r = psmt.executeUpdate();
+			if (r > 0) {
+				psmt = conn.prepareStatement(sql2);
+				psmt.setInt(1, roomno);
+				int r1 = psmt.executeUpdate();
+				if (r > 0) {
+					return true;
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconn();
 		}
 		return false;
 	}
