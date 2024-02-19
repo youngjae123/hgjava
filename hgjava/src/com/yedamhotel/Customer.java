@@ -8,16 +8,17 @@ import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+//@NoArgsConstructor
 public class Customer {
 	String name;// 고객명
 	String phone;// 연락처
 	String id;// 아이디
-	String roomno;// 방번호
+	int roomno;// 방번호
+	String state;
 	String ci;// 체크인
 	String co;// 체크아웃
 	int pr;// 투숙인원
-	int carge = 0;
+//	int carge = 0;
 
 	public static Customer[] getBox() {
 		return box;
@@ -59,13 +60,6 @@ public class Customer {
 		this.id = id;
 	}
 
-	public String getRoomno() {
-		return roomno;
-	}
-
-	public void setRoomno(String roomno) {
-		this.roomno = roomno;
-	}
 
 
 	public String getCo() {
@@ -84,13 +78,13 @@ public class Customer {
 		this.pr = pr;
 	}
 
-	public int getCarge() {
-		return carge;
-	}
+//	public int getCarge() {
+//		return carge;
+//	}
 
-	public void setCarge(int carge) {
-		this.carge = carge;
-	}
+//	public void setCarge(int carge) {
+//		this.carge = carge;
+//	}
 
 	public static int getMax() {
 		return MAX;
@@ -130,6 +124,15 @@ public class Customer {
 		
 	}
 
-//	public long in_time = System.currentTimeMillis();
-//	public long out_time = System.currentTimeMillis();
+	public void setCheckout(java.sql.Date date2) {
+		
+	}
+
+	public void setCheckin(java.sql.Date date2) {
+		
+	}
+
+	public void setInperson(int int1) {
+		
+	}
 }

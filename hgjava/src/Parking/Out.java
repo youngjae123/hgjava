@@ -9,7 +9,7 @@ public class Out {
 	 void out(State state, Scanner s){
 	  int num = 0;
 	     
-	  System.out.println("==============================================\n 주차 했던 곳의 번호를 고르시오.");
+	  System.out.println("======================================\n 주차 했던 곳의 번호를 고르시오.");
 	     num = s.nextInt();
 	     
 	     try {
