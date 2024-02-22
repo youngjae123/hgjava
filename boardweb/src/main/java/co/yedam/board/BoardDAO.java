@@ -93,12 +93,13 @@ public class BoardDAO {
 		}
 		return false;
 	}
+	
 	//목록.
 	public List<Board> boardList() {
+		List<Board> list = new ArrayList<>();
+		conn = DAO.getConn();
 		String sql = " select *"
 				   + " from tbl_board order by 1";
-		conn = DAO.getConn();
-		List<Board> list = new ArrayList<>();
 		
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -110,7 +111,7 @@ public class BoardDAO {
 				board.setContent(rs.getString("content"));
 				board.setWriter(rs.getNString("writer"));
 				board.setViewCnt(rs.getInt("view_cnt"));
-				board.setCrateDate(rs.getDate("create_date"));
+				board.setCreateDate(rs.getDate("create_date"));
 				list.add(board);
 			}
 		} catch (SQLException e) {

@@ -11,5 +11,5 @@ public class Board {
 	private String content;
 	private String writer;
 	private int viewCnt;
-	private Date crateDate;
+	private Date createDate;
 }

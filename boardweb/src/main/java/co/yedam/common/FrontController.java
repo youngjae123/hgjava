@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.yedam.board.control.BoardControl;
+import co.yedam.board.control.BoardListControl;
+
 // init -> service -> destroy
 public class FrontController extends HttpServlet {
 	
@@ -27,6 +30,11 @@ public class FrontController extends HttpServlet {
 //		controls.put("/a.do", new Accontrol());
 //		controls.put("/b.do", new Bccontrol());
 		controls.put("/resume.do", new ResumeForm());
+		controls.put("/main.do", new MainControl());
+		
+		// 게시글목록 이동컨트롤.
+		controls.put("/boardList.do", new BoardListControl());
+		controls.put("/board.do", new BoardControl());
 
 	}
 	
