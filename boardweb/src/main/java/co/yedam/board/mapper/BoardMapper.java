@@ -12,4 +12,8 @@ public interface BoardMapper {
 	
 	// 상세화면에 사용될 데이터.
 	Board selectBoard(int bno);
+	// 조회수 증가.
+	int updateCount(int bno);
+	// 글 수정
+	int updateBoard(Board board);
 }

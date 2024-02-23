@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.board.control.BoardControl;
 import co.yedam.board.control.BoardListControl;
+import co.yedam.board.control.ModifyBoard;
+import co.yedam.board.control.UpdateForm;
 
 // init -> service -> destroy
 public class FrontController extends HttpServlet {
@@ -35,6 +37,9 @@ public class FrontController extends HttpServlet {
 		// 게시글목록 이동컨트롤.
 		controls.put("/boardList.do", new BoardListControl());
 		controls.put("/board.do", new BoardControl());
+		controls.put("/updateForm.do", new UpdateForm());
+		controls.put("/modifyBoard.do", new ModifyBoard());
+		
 
 	}
 	

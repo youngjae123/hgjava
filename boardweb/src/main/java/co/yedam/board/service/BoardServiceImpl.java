@@ -13,7 +13,7 @@ import co.yedam.common.SearchVO;
 // 데이터처리는 mapper 기능.
 public class BoardServiceImpl implements BoardService{
 
-	SqlSession session = DataSource.getinstance().openSession();
+	SqlSession session = DataSource.getinstance().openSession(true);
 	BoardMapper mapper = session.getMapper(BoardMapper.class);
 	@Override
 	public List<Board> boardList(SearchVO search) {
@@ -26,8 +26,7 @@ public class BoardServiceImpl implements BoardService{
 	}
     @Override
     public Board getBoard(int bno) {
-	    System.out.println(bno);
+    	mapper.updateCount(bno);
     	return mapper.selectBoard(bno);
-	    
-}
+    }
 }

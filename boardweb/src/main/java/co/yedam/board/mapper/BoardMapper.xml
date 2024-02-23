@@ -61,4 +61,17 @@
 	  from   tbl_board
 	  where  board_no = #{bno}
 	</select>
+	
+	<update id="updateCount" parameterType="int">
+	  update tbl_board
+      set    view_cnt = view_cnt +1
+      where  board_no = #{bno}
+	</update>
+	<update id="upadteBoard" parameterType="board">
+	  update tbl_board
+      set    title = #{title},
+             content = #{content}
+      where  board_no = #{boardNo}
+	</update>
+	
 </mapper>

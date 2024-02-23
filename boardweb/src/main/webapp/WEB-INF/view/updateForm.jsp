@@ -6,8 +6,8 @@
 <%
   Board board = (Board) request.getAttribute("board");
 %>
-  <h3>상세조회</h3>
-  <form action="updateForm.do">
+  <h3>글 수정</h3>
+  <form action="modifyBoard.do">
     <input type="hidden" value="<%=board.getBoardNo() %>" name="bno">
     <table class="table">
      <tr>
@@ -17,11 +17,12 @@
        <td><%=board.getViewCnt() %></td>
      </tr>
      <tr>
-       <th colspan="2">글제목</th>   
-       <td colspan="2"><%=board.getTitle() %></td>
+       <th >글제목</th>   
+       <td colspan="3"><input class="from-control" type ="text" name="title" value="<%=board.getTitle() %>"></td>
      </tr>
      <tr>
-       <td colspan="4"><%=board.getContent() %></td>
+       <th>글내용</th>
+       <td colspan="4"><textarea name="content" ><%=board.getContent() %></textarea></td>
      </tr>
      <tr>
        <th>작성자</th><td><%=board.getWriter() %></td>
@@ -29,8 +30,8 @@
      </tr>
      <tr>
        <td colspan="4" align="center">
-        <button type="submit" class="btn btn-primary">수정</button>
-        <button type="button" class="btn btn-warning">삭제</button>
+        <button type="submit" class="btn btn-primary">저장</button>
+        <button type="reset" class="btn btn-secondary">취소</button>
        </td>
      </tr>
     </table>
