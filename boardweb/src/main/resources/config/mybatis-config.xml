@@ -7,12 +7,13 @@
  <properties resource="config/db.properties"/>
  
  <settings>
-   <setting name="mapUnderscoreToCamelCase" value="false"/>
+   <setting name="mapUnderscoreToCamelCase" value="true"/>
  </settings>
  
  <typeAliases>
    <typeAlias alias="search" type="co.yedam.common.SearchVO"/>
    <typeAlias alias="board" type="co.yedam.board.Board"/>
+   <typeAlias alias="board" type="co.yedam.member.Member"/>
  </typeAliases>
  
   <environments default="development">
@@ -29,6 +30,7 @@
   
   <mappers>
     <mapper resource="co/yedam/board/mapper/BoardMapper.xml"/>
+    <mapper resource="co/yedam/board/mapper/MemberMapper.xml"/>
   </mappers>
   
 </configuration>

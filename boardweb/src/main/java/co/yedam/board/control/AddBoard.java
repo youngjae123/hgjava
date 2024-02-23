@@ -11,23 +11,23 @@ import co.yedam.board.service.BoardService;
 import co.yedam.board.service.BoardServiceImpl;
 import co.yedam.common.Control;
 
-public class ModifyBoard implements Control {
+public class AddBoard implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String bno = req.getParameter("bno");
+		req.setCharacterEncoding("utf-8");
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
+		String writer = req.getParameter("writer");
 		
 		Board board = new Board();
-		board.setBoardNo(Integer.parseInt(bno));
 		board.setTitle(title);
 		board.setContent(content);
-		
-		// boolean modifyBoard(board)
+		board.setWriter(writer);
+
 		BoardService svc = new BoardServiceImpl();
-		if (svc.modifyBoard(board)) {
+		if (svc.addBoard(board)) {
 			resp.sendRedirect("boardList.do");
 		} else {
 			req.setAttribute("message", "수정 중 에러가 발생했습니다.");
@@ -35,7 +35,7 @@ public class ModifyBoard implements Control {
 			req.getRequestDispatcher(path).forward(req, resp);
 			
 		}
-
 	}
+	
 
 }

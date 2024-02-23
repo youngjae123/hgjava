@@ -29,4 +29,24 @@ public class BoardServiceImpl implements BoardService{
     	mapper.updateCount(bno);
     	return mapper.selectBoard(bno);
     }
+    
+    @Override
+    public boolean modifyBoard(Board board) {
+    	if(mapper.modifyBoard(board)) {
+    		return true;
+    	}
+    	return false;
+    }
+    
+    @Override
+    public boolean removeBoard(int bno) {
+    	if(mapper.deleteBoard(bno)) {
+    		return true;
+    	}
+    	return false;
+    }
+    
+    public boolean addBoard(Board board) {
+    	return mapper.addBoard(board) ==1;
+    }
 }

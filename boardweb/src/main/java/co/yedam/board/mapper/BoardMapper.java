@@ -16,4 +16,9 @@ public interface BoardMapper {
 	int updateCount(int bno);
 	// 글 수정
 	int updateBoard(Board board);
+	boolean modifyBoard(Board board);
+	
+	//글 삭제
+	boolean deleteBoard(int bno);
+	int addBoard(Board board);
 }

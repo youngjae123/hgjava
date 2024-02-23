@@ -11,23 +11,18 @@ import co.yedam.board.service.BoardService;
 import co.yedam.board.service.BoardServiceImpl;
 import co.yedam.common.Control;
 
-public class ModifyBoard implements Control {
+public class RemoveBoard implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String bno = req.getParameter("bno");
-		String title = req.getParameter("title");
-		String content = req.getParameter("content");
 		
-		Board board = new Board();
-		board.setBoardNo(Integer.parseInt(bno));
-		board.setTitle(title);
-		board.setContent(content);
-		
-		// boolean modifyBoard(board)
+		// mapper=> int deleteBoard (int)
+		// service=> boolean removeBoard (int)
+		// 정상삭제되면 목록이동, error페이지로 이동.
 		BoardService svc = new BoardServiceImpl();
-		if (svc.modifyBoard(board)) {
+		if (svc.removeBoard(Integer.parseInt(bno))) {
 			resp.sendRedirect("boardList.do");
 		} else {
 			req.setAttribute("message", "수정 중 에러가 발생했습니다.");

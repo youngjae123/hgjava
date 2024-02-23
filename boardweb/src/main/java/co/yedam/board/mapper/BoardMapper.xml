@@ -67,11 +67,20 @@
       set    view_cnt = view_cnt +1
       where  board_no = #{bno}
 	</update>
-	<update id="upadteBoard" parameterType="board">
+	<update id="modifyBoard" parameterType="board">
 	  update tbl_board
       set    title = #{title},
              content = #{content}
       where  board_no = #{boardNo}
 	</update>
+	<!--   id = boolean deleteBoard(int bno); 의 deleteBoard   -->
+	<update id="deleteBoard" parameterType="int"> <!-- BoardMapper.java 안의 이름이랑 값을 맞춰야함. -->
+	  delete tbl_board			
+      where  board_no = #{bno} 
+	</update>				   <!--   #{boardNo} = deleteBoard(int bno); 의  int bno-->
 	
+	<insert id="addBoard">
+	  insert into tbl_board (board_no, title, content, writer)
+	  values                (board_seq.nextVal, #{title},#{content},#{writer})
+	</insert>
 </mapper>
