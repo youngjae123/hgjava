@@ -34,17 +34,16 @@
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="boardList.do">게시글 목록</a>
                     
                     <c:choose>
-                    <c:when test="${empty logid }">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="loginForm.do">로그인</a>
-                    	</c:when>
-                   		 <c:otherwise>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="addForm.do">게시글 등록</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Logout.do">로그아웃</a> <!-- 세션이 없으면 로그아웃 --> 
-                    	</c:otherwise>
+                      <c:when test="${empty logid }">
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="loginForm.do">로그인</a>
+                      </c:when>
+                   	  <c:otherwise>
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="addForm.do">게시글 등록</a>
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Logout.do">로그아웃</a> <!-- 세션이 없으면 로그아웃 --> 
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="memberlist.do">회원리스트</a>
+                      </c:otherwise>
                     </c:choose>
-                    
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
+                      <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
                 </div>
             </div>
             <!-- Page content wrapper-->

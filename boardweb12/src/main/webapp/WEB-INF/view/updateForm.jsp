@@ -3,7 +3,6 @@
 <%@page import="co.yedam.board.Board"%>
 
 
-<jsp:include page="../includes/header.jsp"></jsp:include>
 
 
 <%
@@ -53,4 +52,3 @@ Board board = (Board) request.getAttribute("board");
 	
 		</table>
 	</form>
-<jsp:include page="../includes/footer.jsp"></jsp:include>

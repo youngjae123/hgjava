@@ -28,7 +28,7 @@ public class BoardControl implements Control {
 		// "board", board 굳이 통일 x 이름 헷갈리지만 않으면 됨.
 		
 		
-		String path = "WEB-INF/view/board.jsp";
+		String path = "board/board.tiles";
 		req.getRequestDispatcher(path).forward(req, resp);
 											//요청정보와 응답정보를 같이 전달.
 		

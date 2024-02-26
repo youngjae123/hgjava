@@ -23,7 +23,7 @@ public class RemoveBoard implements Control {
 			resp.sendRedirect("boardList.do"); // 맞으면 이동.
 		} else {
 			req.setAttribute("message", "삭제 중 에러가 발생했습니다.");
-			String path = "WEB-INF/view/error.jsp"; // 원래페이지로 이동.
+			String path = "board/error.tiles"; // 원래페이지로 이동.
 			req.getRequestDispatcher(path).forward(req, resp);
 		}
 		

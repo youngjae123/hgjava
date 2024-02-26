@@ -23,7 +23,7 @@ public class RemoveForm implements Control{ // FrontControl 의 controls.put("/r
 		// WEB-INF/view/deleteForm.jsp 로
 		req.setAttribute("board", board);
 		
-		String path = "WEB-INF/view/deleteForm.jsp";
+		String path = "board/deleteForm.tiles";
 		req.getRequestDispatcher(path).forward(req, resp);
 		
 

@@ -29,7 +29,7 @@ public class updateForm implements Control {
 		// board의 조회하여 저장.
 		
 		
-		String path = "WEB-INF/view/updateForm.jsp";
+		String path = "board/updateForm.tiles";
 		req.getRequestDispatcher(path).forward(req, resp);
 		// 조회된결과가 보여짐.
 	}

@@ -29,7 +29,7 @@ public class LoginControl implements Control {
 		if(member != null) { // 아이디, 비번 확인 후 정상이면 = resp.sendRedirect("boardList.do"); 로 이동
 			
 			HttpSession session = req.getSession(); // 사용자별로 다른 세션 값.
-			session.setAttribute("logid", id); // attribute를 활용.
+			session.setAttribute("logid", member.getId()); // attribute를 활용.
 			session.setAttribute("logName", member.getName());
 			resp.sendRedirect("boardList.do");
 		}else {

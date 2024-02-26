@@ -16,7 +16,6 @@ public class T_MainControl implements Control { //에러 확인용 클래스
 		String path = "WEB-INF/view/main.jsp";
 		RequestDispatcher dispatch = req.getRequestDispatcher(path);//
 		dispatch.forward(req, resp); //페이지 재지정.
-		
 	}
 
 }

@@ -3,7 +3,6 @@
 	pageEncoding="UTF-8"%>
 
 		
-		<jsp:include page="../includes/header.jsp"></jsp:include>
 		
 		<% Board board = (Board) request.getAttribute("board"); %>
 		<!-- header 파일 불러오기 -->
@@ -28,4 +27,3 @@
 		</table>
 		</form>
 <!-- footer 파일 불러오기 -->
-<jsp:include page="../includes/footer.jsp"></jsp:include>

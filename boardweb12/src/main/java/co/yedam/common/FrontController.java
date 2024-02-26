@@ -23,6 +23,7 @@ import co.yedam.member.control.AddMemberForm;
 import co.yedam.member.control.LoginControl;
 import co.yedam.member.control.LoginForm;
 import co.yedam.member.control.LogoutControl;
+import co.yedam.member.control.MemberList;
 
 // init -> service -> destroy
 public class FrontController extends HttpServlet {
@@ -40,7 +41,7 @@ public class FrontController extends HttpServlet {
 	// init. 최초한번 실행.
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		controls.put("/resume.do", new x_ResumeForm());
+		//controls.put("/resume.do", new x_ResumeForm());
 		controls.put("/main.do", new T_MainControl());
 		//System.out.println("init 실행.");
 		//controls.put("/a.do", new Acontrol());
@@ -65,6 +66,8 @@ public class FrontController extends HttpServlet {
 		controls.put("addmember.do", new AddMemberControl());
 		controls.put("addmemberForm.do", new AddMemberForm());
 		
+		// 회원리스트
+		controls.put("memberlist.do", new MemberList());
 		
 		
 	}
