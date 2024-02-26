@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 해당되는 클래스에 정의. developer을 활용 sql문. -->
+<mapper namespace="co.yedam.member.mapper.MemberMapper">
+	<!-- //해당되는 mapper 파일에 대한 이름, 경로 (매칭시켜주는 역할) -->
+<select id="selectMember" parameterType="member">
+select id,
+	   pw,
+	   name,
+	   auth
+from   tbl_member
+where id = #{id}
+and   pw = #{pw}
+
+
+</select>
+	
+</mapper>
