@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import co.yedam.board.control.AddBoard;
 import co.yedam.board.control.AddForm;
 import co.yedam.board.control.BoardControl;
@@ -24,6 +25,7 @@ import co.yedam.member.control.LoginControl;
 import co.yedam.member.control.LoginForm;
 import co.yedam.member.control.LogoutControl;
 import co.yedam.member.control.MemberList;
+import co.yedam.member.control.ProductListControl;
 
 // init -> service -> destroy
 public class FrontController extends HttpServlet {
@@ -67,8 +69,14 @@ public class FrontController extends HttpServlet {
 		controls.put("addmemberForm.do", new AddMemberForm());
 		
 		// 회원리스트
-		controls.put("memberlist.do", new MemberList());
+		//controls.put("memberlist.do", new MemberList());
 		
+		// 기타
+		controls.put("/productList.do" , new ProductListControl());
+		
+		//controls.put("/carList.do" , new CartListControl());
+		
+		controls.put("/userList.do", new UserListControl()) ;
 		
 	}
 	

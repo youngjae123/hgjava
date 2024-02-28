@@ -46,6 +46,7 @@
                       <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
                 </div>
             </div>
+            </div>
             <!-- Page content wrapper-->
             <div id="page-content-wrapper">
                 <!-- Top navigation-->
@@ -70,5 +71,6 @@
                         </div>
                     </div>
                 </nav>
+                </div>
                 <!-- Page content-->
                 <!-- 까지 header -->

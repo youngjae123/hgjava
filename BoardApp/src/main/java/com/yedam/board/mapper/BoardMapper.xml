@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 해당되는 클래스에 정의. developer을 활용 sql문. -->
+<mapper namespace="com.yedam.board.mapper.BoardMapper">
+	<!-- //해당되는 mapper 파일에 대한 이름, 경로 (매칭시켜주는 역할) -->
+
+	<select id="boardList" resultType="board">
+		select rn,
+		       board_no,
+		       title,
+		       content,
+		       writer,
+		       view_cnt,
+		       create_date
+		from   (select /*+ INDEX (b board_pk) */ rownum rn, b. *
+		        from tbl_board b
+		        ) a
+	</select>
+
+</mapper>

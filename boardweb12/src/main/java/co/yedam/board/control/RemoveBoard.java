@@ -6,7 +6,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.yedam.board.Board;
 import co.yedam.board.service.BoardService;
 import co.yedam.board.service.BoardServiceImp1;
 import co.yedam.common.Control;

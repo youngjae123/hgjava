@@ -8,13 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.common.Control;
 
-public class AddMemberForm implements Control {
+public class ProductListControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		String path = "member/addMemberForm.tiles";
+		String path = "product/procuctList.jsp";
 		req.getRequestDispatcher(path).forward(req, resp);
+
 	}
 
 }
