@@ -14,7 +14,6 @@ public class ReplyTotalCount implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		String bno = req.getParameter("bno");
 		
 		ReplyService svc = new ReplyServiceImpl();
