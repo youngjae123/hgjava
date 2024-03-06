@@ -58,10 +58,5 @@ public class BoardServiceImpl implements BoardService {
 	public boolean addBook(Book book) {
 		return mapper.insertBook(book) == 1;
 	}
-	
-	public boolean removeBook(String bcode) {
-		return mapper.deleteBook(bcode) == 1;
-	}
-	
 
 }

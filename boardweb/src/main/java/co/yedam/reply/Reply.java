@@ -11,5 +11,4 @@ public class Reply {
 	private String reply;
 	private String replyer;
 	private Date replyDate;
-
 }

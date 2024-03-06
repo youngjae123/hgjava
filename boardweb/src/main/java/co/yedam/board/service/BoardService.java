@@ -19,6 +19,5 @@ public interface BoardService {
 	// 도서관련.
 	List<Book> bookList();
 	boolean addBook(Book book);
-	boolean removeBook(String bcode);
 
 }

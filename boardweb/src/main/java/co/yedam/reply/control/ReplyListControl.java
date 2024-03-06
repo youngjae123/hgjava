@@ -17,29 +17,26 @@ import co.yedam.reply.service.ReplyService;
 import co.yedam.reply.service.ReplyServiceImpl;
 
 public class ReplyListControl implements Control {
-
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String bno = req.getParameter("bno");
 		String page = req.getParameter("page");
-		
+
 		SearchVO search = new SearchVO();
 		search.setBno(Integer.parseInt(bno));
 		search.setRpage(Integer.parseInt(page));
-		
-        resp.setContentType("text/json;charset=utf-8");
-		
+
+		resp.setContentType("text/json;charset=utf-8");
+
 		ReplyService svc = new ReplyServiceImpl();
 		List<Reply> list = svc.replyList(search);
-		
-		Gson gson = new GsonBuilder().create();
-		
-		String json = gson.toJson(list); // 객체 -> json 문자열 생성.
-		
+
+		Gson gson = new GsonBuilder()//
+				.create();
+
+		String json = gson.toJson(list); // 객체 -> json문자열.
+
 		resp.getWriter().print(json);
-		
-
 	}
-
 }

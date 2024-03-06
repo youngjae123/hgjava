@@ -102,8 +102,4 @@
     values (#{bookCode}, #{bookName}, #{author}, #{press}, #{price})
   </insert>
 
-  <delete id="deleteBook" parameterType="string">
-    delete from tbl_book
-    where       book_code = #{bcode}
-  </delete>
 </mapper>

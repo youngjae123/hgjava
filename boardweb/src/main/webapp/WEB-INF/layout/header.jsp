@@ -24,7 +24,7 @@
                     <div class="sidebar-heading border-bottom bg-light">Start Bootstrap (손님)</div>
                   </c:when>
                   <c:otherwise>
-                    <div class="sidebar-heading border-bottom bg-light">Start Bootstrap (${logName })</div>
+                    <div class="sidebar-heading border-bottom bg-light">Start Bootstrap (${logid })</div>
                   </c:otherwise>
                 </c:choose>
                 

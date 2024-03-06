@@ -24,5 +24,4 @@ public interface BoardMapper {
 	// 도서목록.
 	List<Book> bookList();
 	int insertBook(Book book);
-	int deleteBook(String bcode);
 }

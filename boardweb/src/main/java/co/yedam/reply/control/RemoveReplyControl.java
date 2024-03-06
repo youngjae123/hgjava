@@ -22,19 +22,20 @@ public class RemoveReplyControl implements Control {
 		// TODO Auto-generated method stub
 		resp.setContentType("text/json;charset=utf-8");
 		String rno = req.getParameter("rno");
-		
+
 		ReplyService svc = new ReplyServiceImpl();
 		Map<String, String> map = new HashMap<>();
-		
-		if(svc.removeReply(Integer.parseInt(rno))) {
+
+		if (svc.removeReply(Integer.parseInt(rno))) {
 			map.put("retCode", "OK");
-			map.put("retMsg", "정상적으로 삭제되었습니다.");
+			map.put("retMsg", "정상적으로 삭제되었습니다");
 		} else {
 			map.put("retCode", "NG");
-			map.put("retMsg", "삭제할 글번호가 없습니다.");
+			map.put("retMsg", "삭제할 글번호가 없습니다");
 		}
 		Gson gson = new GsonBuilder().create();
 		String json = gson.toJson(map);
+
 		resp.getWriter().print(json);
 	}
 

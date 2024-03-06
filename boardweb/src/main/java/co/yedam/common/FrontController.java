@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.board.control.AddBoard;
+import co.yedam.board.control.AddBookControl;
 import co.yedam.board.control.AddForm;
 import co.yedam.board.control.BoardControl;
 import co.yedam.board.control.BoardListControl;
@@ -19,8 +20,6 @@ import co.yedam.board.control.ModifyBoard;
 import co.yedam.board.control.RemoveBoard;
 import co.yedam.board.control.RemoveForm;
 import co.yedam.board.control.UpdateForm;
-import co.yedam.board.control.addBookControl;
-import co.yedam.board.control.removeBookControl;
 import co.yedam.member.control.AddMemberControl;
 import co.yedam.member.control.AddMemberForm;
 import co.yedam.member.control.LoginControl;
@@ -63,33 +62,35 @@ public class FrontController extends HttpServlet {
 		// 회원등록.
 		controls.put("/addMember.do", new AddMemberControl());
 		controls.put("/addMemberForm.do", new AddMemberForm());
-		
+
 		// 기타.
 		controls.put("/productList.do", new ProductListControl());
 		controls.put("/cartList.do", new CartListControl());
-		
+
 		// 자바스크립트 연습.
 		controls.put("/userList.do", new UserListControl());
-		
+
 		// Ajax 연습.
 		controls.put("/bookList.do", new BookListControl());
-		controls.put("/addBook.do", new addBookControl());
-		controls.put("/removeBook.do", new removeBookControl());
-		controls.put("/removeBook.do", new removeBookControl());
-		
-		//댓글관련.
+		controls.put("/addBook.do", new AddBookControl());
+
+		// 댓글관련.
 		controls.put("/replyList.do", new ReplyListControl());
 		controls.put("/removeReply.do", new RemoveReplyControl());
 		controls.put("/addReply.do", new AddReplyControl());
 		controls.put("/getTotal.do", new ReplyTotalCount());
 		
-
+		controls.put("/registerCenter.do", new RegisterCenter());
+		controls.put("/getSidoInfo.do", new SidoInfoControl());
+		
+		
 	}
 
 	// service. 요청때마다 실행.
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("utf-8");
+		req.setCharacterEncoding("utf-8"); // post일 경우.
+		// get: 전송 
 
 		String uri = req.getRequestURI(); // 현재 페이지의 url.
 		String context = req.getContextPath(); // 어플리케이션

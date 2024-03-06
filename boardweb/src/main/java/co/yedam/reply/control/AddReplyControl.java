@@ -22,33 +22,29 @@ public class AddReplyControl implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		resp.setContentType("text/json;charset=utf-8");
-		
+
 		String bno = req.getParameter("bno");
-		String reply = req.getParameter("reply");
 		String replyer = req.getParameter("replyer");
-		
+		String reply = req.getParameter("reply");
+
 		Reply rep = new Reply();
 		rep.setBoardNo(Integer.parseInt(bno));
 		rep.setReply(reply);
 		rep.setReplyer(replyer);
-		
+
 		ReplyService svc = new ReplyServiceImpl();
-		Map<String,Object> map = new HashMap<>();
-		
-		
-		svc.addReply(rep);
-		
+		Map<String, Object> map = new HashMap<>();
+
 		if (svc.addReply(rep)) {
 			map.put("retCode", "OK");
 			map.put("retVal", rep);
-			
-			
+
 		} else {
-			map.put("reyCode", "NG");
+			map.put("retCode", "NG");
+
 		}
 		Gson gson = new GsonBuilder().create();
 		resp.getWriter().print(gson.toJson(map));
-		
 
 	}
 

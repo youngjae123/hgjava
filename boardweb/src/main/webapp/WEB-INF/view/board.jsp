@@ -3,50 +3,54 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <style>
-div.reply div {
-  margin: auto;
-}
-div.reply span {
-  display: inline-block;
-}
-div.reply ul {
-  list-style-type: none;
-  margin-top: 10px;
-}
-div.reply li {
-  padding-top: 1px;
-  padding-bottom: 1px;
-}
+  div.reply div {
+    margin: auto;
+  }
 
-.center {
-  text-align: center;
-  width: 60%;
-  margin: auto;
-}
+  div.reply span {
+    display: inline-block;
+  }
 
-.pagination {
-  display: inline-block;
-}
+  div.reply ul {
+    list-style-type: none;
+    margin-top: 10px;
+  }
 
-.pagination a {
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-  transition: background-color .3s;
-  /*border: 1px solid #ddd;*/
-  /*margin: 0 4px;*/
-}
+  div.reply li {
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
 
-.pagination a.active {
-  background-color: #4CAF50;
-  color: white;
-  border: 1px solid #4CAF50;
-}
+  .center {
+    text-align: center;
+    width: 60%;
+    margin: auto;
+  }
 
-.pagination a:hover:not(.active) {background-color: #ddd;}
+  .pagination {
+    display: inline-block;
+  }
+
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    /*border: 1px solid #ddd;*/
+    /*margin: 0 4px;*/
+  }
+
+  .pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+  }
+
+  .pagination a:hover:not(.active) {
+    background-color: #ddd;
+  }
 </style>
-
 
 <h3>상세조회</h3>
 <form action="updateForm.do">
@@ -95,32 +99,34 @@ div.reply li {
     <button class="col-sm-3 addReply">댓글등록</button>
   </div>
   <div class="content">
-		<ul>
-		  <li>
-		    <span class="col-sm-2">글번호</span>
-		    <span class="col-sm-5">내용</span>
-		    <span class="col-sm-2">작성자</span>
-		    <span class="col-sm-2">삭제</span>
-		  </li>
-		  <li><hr></li>
-		</ul>
+    <ul>
+      <li>
+        <span class="col-sm-2">글번호</span>
+        <span class="col-sm-5">내용</span>
+        <span class="col-sm-2">작성자</span>
+        <span class="col-sm-2">삭제</span>
+      </li>
+      <li>
+        <hr>
+      </li>
+    </ul>
   </div>
   <div class="footer">
-		<div class="center">
-  		<div class="pagination">
-    		<a href="">1</a>
-    		<a href="">2</a>
-    		<a href="" class="active">3</a>
-  		</div>
-  	</div>
-	</div>
+    <div class="center">
+      <div class="pagination">
+        <a href="">1</a>
+        <a href="">2</a>
+        <a href="" class="active">3</a>
+      </div>
+    </div>
+  </div>
 </div> <!-- div.container.reply -->
 
 <script>
   const bno = "${board.boardNo }";
   const replyer = "${logid}";
-  
   console.log(bno);
+
   function removeFunc() {
     let form = document.querySelector('form');
     console.log(form.action);
