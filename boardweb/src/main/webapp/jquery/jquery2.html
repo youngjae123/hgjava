@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+  Todo: <input id="userVal"><button id="addBtn">추가</button>
+  <br />
+  <ul id="list"></ul>
+  
+  <hr/>
+  학번: <input id="sno">
+  이름: <input id="sname">
+  점수: <input id="score">
+ <button class="addBtn">등록</button>
+ <table border ="1">
+   <thead>
+     <tr>
+       <th><input type="checkbox"></th>
+       <th>학번</th>
+       <th>이름</th>
+       <th>점수</th>
+     </tr>
+   </thead>
+ <tbody id="list1">
+  <tr>
+        <td><input type="checkbox"></td>
+        <td>학번</td>
+        <td>이름</td>
+        <td>점수</td>
+  </tr>
+  <tr>
+        <td><input type="checkbox"></td>
+        <td>학번</td>
+        <td>이름</td>
+        <td>점수</td>
+  </tr>
+ </tbody>
+ </table>
+  
+  <script>
+  //체크박스 change 이벤트.
+  $('thead input[type= "checkbox"]').on('change', function (e){
+	  console.log($(this).prop('checked'));
+	  let trueOrFalse = $(this).prop('checked')
+	  $('tbody input[type= "checkbox"]').prop('checked',trueOrFalse);
+  });
+  
+  // 등록버튼  
+  // $('#addBtn') 버튼요소를 찾아온다.= querySelector, on = addEvent
+    $('#addBtn').on('click', function(e){
+       let val = $('#userVal').val();
+       let delBtn = $('<button>삭제</button>');
+       delBtn.on('click',function(e){
+    	   delBtn.parent().remove();
+       })
+       $('#list').append($('<li />').text(val).append(delBtn)); //<li>홍길동<button>추가</button></li>= text = 홍길동 
+       $('#userVal').val('');// 초기화
+    })
+    
+    $('.addBtn').on('click', function(e){
+    	//tr생성 -> td 3개 생성
+    	//let sn = $('#sno').val();
+    	//let snm = $('#sname').val();
+    	//let sc = $('#score').val();
+    	
+    	//$('#list1').append(
+    		//$('<tr/>').append(
+    			//$('<td/>').text(sn),
+    			//$('<td/>').text(snm),
+    			//$('<td/>').text(sc)));
+    	
+    	$('#list1').append(
+        		$('<tr/>').append(
+        		    $('<td />').append($('<input />').attr('type', 'checkbox')),
+        			$('<td />').text($('#sno').val()),
+        			$('<td />').text($('#sname').val()),
+        			$('<td />').text($('#score').val())));
+    	//입력 초기화
+    	$('#sno').val('');
+    	$('#sname').val('');
+    	$('score').val('');
+    })
+    
+    
+  </script>
+</body>
+</html>

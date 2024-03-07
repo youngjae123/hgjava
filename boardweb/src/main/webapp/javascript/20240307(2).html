@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #show {
+      background: yellow;
+      width: 400px;
+      height: 205px;
+    }
+
+    #show span {
+      display: inline-block;
+      width: 90px;
+      border: 1px solid green;
+      background: pink;
+      margin: 1px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <select class="left" multiple style="height:150px">
+    <option value="">hello1</option>
+    <option value="">hello2</option>
+    <option value="">hello3</option>
+    <option value="">hello4</option>
+    <option value="">hello5</option>
+  </select>
+
+  <button id ="right">+</button>
+  <button id = "left">-</button>
+
+  <select class="right" multiple style="height:150px">
+    <option value="">world1</option>
+    <option value="">world2</option>
+    <option value="">world3</option>
+    <option value="">world4</option>
+    <option value="">world5</option>
+  </select>
+ <script>
+  //document.querySelector('#right').addEventListener('click',function(e){
+  //document.querySelectorAll('.left option').forEach(item => {
+	  //if(item.selected){
+		  //document.querySelector('.right').append(item);
+	  //}
+  //})
+ //})
+ //document.querySelector('#left').addEventListener('click',function(e){
+  //document.querySelectorAll('.right option').forEach(item => {
+	  //if(item.selected){
+		  //document.querySelector('.left').append(item);
+	  //}
+  //})
+  
+ //})
+ 
+ 
+ 
+ //document.querySelector('button:nth-of-type(1)').addEventListener('click', function(e){
+   //documeny.querySelectorAll('.left option').forEach(opt => {
+	 //if(opt.selected == true) {
+        //document.querySelector('.right').append(opt);
+		 //}
+	 //})
+// })
+ $('#right').on('click', function(e){
+	$('.right').append($('.left option:selected')); 
+ })
+ $('#left').on('click', function(e){
+	$('.left').append($('.right option:selected')); 
+ })
+ 
+ 
+ </script>
+</body>
+
+</html>
