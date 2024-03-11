@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link href = "//cdn.datatables.net/2.0.2/css/dataTables.dataTables.min.css" rel="stylesheet" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="//cdn.datatables.net/2.0.2/js/dataTables.min.js"></script>
+
 <style>
   div.reply div {
     margin: auto;
@@ -114,26 +112,13 @@
     </ul>
   </div>
   <div class="footer">
-   <!-- datatable start. -->
-   <table id="example" class="display" style="width:80%">
-        <thead>
-            <tr>
-                <th>댓글 번호</th>
-                <th>댓글 내용</th>
-                <th>작성자</th>
-                <th>작성일시</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <th>댓글 번호</th>
-                <th>댓글 내용</th>
-                <th>작성자</th>
-                <th>작성일시</th>
-            </tr>
-        </tfoot>
-    </table>
-    <!-- datatable end -->
+    <div class="center">
+      <div class="pagination">
+        <a href="">1</a>
+        <a href="">2</a>
+        <a href="" class="active">3</a>
+      </div>
+    </div>
   </div>
 </div> <!-- div.container.reply -->
 
@@ -141,34 +126,15 @@
   const bno = "${board.boardNo }";
   const replyer = "${logid}";
   console.log(bno);
-//삭제
+
   function removeFunc() {
     let form = document.querySelector('form');
     console.log(form.action);
     form.action = 'removeForm.do';
     form.submit();
   }
-  //페이지 리스트
-  var table = $('#example').DataTable({
-	    ajax: 'dataTable.do?bno='+bno,
-	    columns: [
-	        { data: 'replyNo' },
-	        { data: 'reply' },
-	        { data: 'replyer' },
-	        { data: 'replyDate' }
-	    ],
-	    lengthMenu: [
-	    	[5, 7, 10, 20, -1],
-	    	[5, 7 ,10, 20, 'All']
-	    ]
-	});
-  //등록
-  // ajax호출 후 화면에 추가하기.
-  $('.addReply').on('click', function() {
-	  table.row.add({ 'replyNo': '1' ,
-	                  'reply': 'reply' ,
-	                  'replyer': 'replyer' ,
-	                  'replyDate': 'replyDate' }).draw(false);
-  })
-  
 </script>
+<!--<script src="static/js/boardService.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<!--<script src="static/js/boardAjax.js"></script> -->
+<script type="module" src="static/js/boardService3.js"></script>

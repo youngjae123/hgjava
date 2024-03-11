@@ -106,7 +106,7 @@ function makeRow2(obj = {}) {
 async function deleteRow(e) {
 	let rno = this.parentElement.parentElement.dataset.rno;
 	let li = this.parentElement.parentElement;
-	
+
 	// 작성자와 로그인 비교.
 	console.dir(this.parentElement);
 	let writer = this.parentElement.previousElementSibling.innerText;
