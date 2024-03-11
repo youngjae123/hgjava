@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="co.yedam.BookMapper">
+
+<select id="bookList" resultType="co.yedam.BookVO">
+    select book_code
+          ,book_name
+          ,author
+          ,press
+          ,price
+    from tbl_book
+  </select>
+  
+</mapper>
