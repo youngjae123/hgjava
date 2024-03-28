@@ -13,6 +13,7 @@ let template=`
         <!--<li v-for="(data,i) in myArray" :key="i">{{i}} : {{data}}</li>-->
         <li v-for="(data,i) in myArray" :key="data">{{i}} : {{data}}</li>
     </ul>
+
     <!-- 객체 배열을 활용 -->
     <!-- 1)-> -->
     <div> 1)
@@ -23,6 +24,7 @@ let template=`
         </ul>
     </div>
         <hr>
+        
         <!-- 2) -->
     <div>2)
         <ul v-for="user in users" :key="user.id">

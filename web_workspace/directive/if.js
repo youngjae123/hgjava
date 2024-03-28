@@ -15,7 +15,9 @@ let template=`
     <p v-else-if="score >=70">C</p>
     <p v-else-if="score >=60">D</p>
     <p v-else>F</p>
+
     <!-- v-for 과 v-if -->
+    <!-- template 에 for 밑에 태그에 if 암기!!!!!!!!!!!-->
     <template v-for="dan in 9" :key="dan">
     <div v-if="dan%2 == 0">
             <p v-for="num in 9" :key="num">
