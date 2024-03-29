@@ -24,12 +24,21 @@ let template = `
 
 export default {
     template,
-    // computed:{
-    //     msg(){
-    //         return this.$refs.child.msg;
-    //     }
-    // },
+    data(){
+        return{
+            isMounted:false
+        }
+    },
+    mounted(){
+        this.isMounted=true;
+    },
+     computed:{
+         msg(){
+             return this.isMounted ? '' : this.$regs.child.msg;
+         }
+     },
     methods: {
+        
         changeChildDate(){
             console.log(this.$refs);
             //console.log(this.$refs.child);
