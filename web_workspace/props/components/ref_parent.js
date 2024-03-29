@@ -34,7 +34,7 @@ export default {
     },
      computed:{
          msg(){
-             return this.isMounted ? '' : this.$regs.child.msg;
+             return !this.isMounted ? '' : this.$refs.child.msg;
          }
      },
     methods: {
