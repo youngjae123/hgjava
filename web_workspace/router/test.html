@@ -2,23 +2,20 @@
     <table>
          <tr>
              <th>id</th>
-             <td>{{postInfo.id}}</td>
+             <td><input type="text" v-model="post.id"></td>
          </tr>
          <tr>
              <th>title</th>
-             <td>{{postInfo.title}}</td>
+             <td><input type="text" v-model="post.title"></td>
          </tr>
          <tr>
              <th>userId</th>
-             <td>{{postInfo.userId}}</td>
- 
+             <td><input type="text" v-model="post.userId"></td>
          </tr>
          <tr>
              <th>body</th>
              <td>
-                 <textarea readonly >
-                  {{postInfo.body}}
-                 </textarea>
+                 <textarea v-model="post.body" />
              </td>
          </tr>
     </table>
